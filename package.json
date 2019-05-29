@@ -1,0 +1,21 @@
+{
+  "name": "mini-vue",
+  "version": "1.0.0",
+  "description": "A mini mvvm framework similar to vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --config webpack.config.js --mode production --watch",
+    "build": "webpack --config webpack.config.js --mode production"
+  },
+  "keywords": [
+    "vue",
+    "mvvm"
+  ],
+  "author": "supfn",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}

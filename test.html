@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./dist/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>{{title}}</h3>
+        <div> <button v-on:click="print">显示/隐藏</button> - <input type="text" v-model="msg"  > - <b v-show="isShow">msg: {{msg}}</b>  </div>
+        <br>
+        <div>
+            people.name: <input type="text" v-model="people.name" > &nbsp;&nbsp;&nbsp;&nbsp;
+            people.age: <input type="number" v-model="people.age" >
+        </div>
+        <br>
+        <div> I am {{people.name}} , My age is {{people.age}}</div>
+        <br>
+        <p>computed greet: {{greet}}</p>
+        <p>arr value change by index: {{arrStr}}</p>
+    </div>
+    <script>
+        window.vm = new MiniVue({
+            el: '#app',
+            data: {
+                title: 'A mini Vue Framework',
+                msg: '123',
+                arr: [0,1,2],
+                isShow: true,
+                people: {
+                    name: '张三',
+                    age: 10
+                }
+            },
+            methods: {
+                print(){
+                    this.isShow = !this.isShow
+                }
+            },
+            watch: {
+                msg(newVal){
+                    console.log('watch msg:',newVal)
+                }
+            },
+            computed: {
+                greet: function () {
+                    return `hello, I am ${this.people.name}, My age twice is ${this.people.age * 2}`;
+                },
+                arrStr: function () {
+                    return this.arr.toString()
+                }
+            }
+        })
+    </script>
+</body>
+</html>
