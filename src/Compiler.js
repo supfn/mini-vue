@@ -1,5 +1,6 @@
 import Directive from './Directive';
 
+// Compiler: 模板解析器，可对模板中的指令、表达式、属性(props)进行解析，为视图绑定相应的更新函数。
 class Compiler {
   constructor(el, vm) {
     this.el = document.querySelector(el);
@@ -57,7 +58,7 @@ class Compiler {
       }
       fragment.appendChild(textNode);
     });
-    parent.replaceChild(fragment, textNode);
+    parent.replaceChild(fragment, textNode); // https://developer.mozilla.org/zh-CN/docs/Web/API/Node/replaceChild
   }
 
   /**
@@ -108,7 +109,7 @@ class Compiler {
         let exp = attr.value,
           type = name.substring(2),
           index, eventType;
-        if (reg.test(type)) {
+        if (reg.test(type)) { // on:click
           index = reg.exec(type).index;
           eventType = type.substring(index + 1);
           type = type.substring(0, index);

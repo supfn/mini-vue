@@ -40,11 +40,11 @@ class Directive {
 
     updateView(node, exp, newVal);
 
-    let watcher = new Watcher(vm, exp, newVal => {
+    let watcher = new Watcher(vm, exp, (newVal, oldVal) => {
       updateView(node, exp, newVal);
       Object.keys(vm.watch).forEach(key => {
         if (key === exp) {
-          vm.watch[key](newVal);
+          vm.watch[key].call(vm, newVal, oldVal);
         }
       });
     });

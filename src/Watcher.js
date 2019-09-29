@@ -1,5 +1,6 @@
 import Dep from './Dep';
 
+// Watcher: 订阅者，订阅并收到所有 Model 变化的通知，执行对应的指令（表达式）绑定函数；
 class Watcher {
   constructor(vm, exp, cb) {
     this.vm = vm;

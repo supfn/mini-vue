@@ -6,6 +6,7 @@ function observer(data) {
   }
 }
 
+// Observer: 数据观察者，对所有 Model 数据进行 defineReactive，即使所有 Model 数据在数据变更时，可以通知数据订阅者；
 class Observer {
   constructor(data) {
     this.data = data;
