@@ -76,10 +76,10 @@ class Compiler {
       if (index > lastIndex) {
         tokens.push({
           value: textContent.slice(lastIndex, index),
-          tag: false
+          tag: false  
         });
       }
-
+      // tag标识是模板变量还是常规字符串
       value = match[1];
       tokens.push({
         value,
