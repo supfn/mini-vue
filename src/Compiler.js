@@ -1,4 +1,4 @@
-import Directive from './Directive';
+import Updater from './Updater';
 
 // Compiler: 模板解析器，可对模板中的指令、表达式、属性(props)进行解析，为视图绑定相应的更新函数。
 class Compiler {
@@ -52,7 +52,7 @@ class Compiler {
       let textNode;
       if (token.tag) {
         textNode = document.createTextNode("");
-        Directive.text(textNode, this.vm, token.value);
+        Updater.text(textNode, this.vm, token.value);
       } else {
         textNode = document.createTextNode(token.value);
       }
@@ -76,7 +76,7 @@ class Compiler {
       if (index > lastIndex) {
         tokens.push({
           value: textContent.slice(lastIndex, index),
-          tag: false  
+          tag: false
         });
       }
       // tag标识是模板变量还是常规字符串
@@ -114,7 +114,7 @@ class Compiler {
           eventType = type.substring(index + 1);
           type = type.substring(0, index);
         }
-        Directive[type](elementNode, this.vm, exp, type, eventType);
+        Updater[type](elementNode, this.vm, exp, type, eventType);
       }
     });
     if (children && children.length > 0) {

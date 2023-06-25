@@ -6,7 +6,9 @@ function observer(data) {
   }
 }
 
-// Observer: 数据观察者，对所有 Model 数据进行 defineReactive，即使所有 Model 数据在数据变更时，可以通知数据订阅者；
+// Observer: 数据观察者，对所有数据进行 defineReactive
+// getter: 在数据获取时，收集依赖，创建订阅者Dep实例，并在其中添加观察者watcher
+// setter: 在数据变更时，派发更新，及通知数据订阅者执行 dep.notify
 class Observer {
   constructor(data) {
     this.data = data;

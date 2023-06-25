@@ -1,6 +1,6 @@
 import Dep from './Dep';
 
-// Watcher: 订阅者，订阅并收到所有 Model 变化的通知，执行对应的指令（表达式）绑定函数；
+// Watcher: 观察者，订阅 Dep 变化的通知，执行对应回调函数cb更新视图；
 class Watcher {
   constructor(vm, exp, cb) {
     this.vm = vm;
@@ -11,9 +11,9 @@ class Watcher {
   }
 
   get() {
-    Dep.target = this;
-    let value = this.getVMData();
-    Dep.target = null;
+    Dep.target = this;  // 将 Dep.target 指向自己
+    let value = this.getVMData(); // 然后触发属性的 getter 添加监听
+    Dep.target = null; // 最后将 Dep.target 置空
     return value;
   }
 

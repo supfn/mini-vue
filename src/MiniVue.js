@@ -9,8 +9,8 @@ class MiniVue {
     this.watch = options.watch;
     this.methods = options.methods;
 
-    this._setProxy();
-    this._initComputed();
+    this.setProxy();
+    this.initComputed();
     observer(this.data);
     new Compiler(this.el, this);
   }
@@ -18,7 +18,7 @@ class MiniVue {
   /**
    * Set the proxy for each property in the data object : vm.data.xx => vm.xx
    */
-  _setProxy() {
+  setProxy() {
     let _this = this;
     Object.keys(this.data).forEach(key => {
       Object.defineProperty(this, key, {
@@ -34,7 +34,7 @@ class MiniVue {
     });
   }
 
-  _initComputed() {
+  initComputed() {
     let _this = this;
     if (typeof this.computed === 'object') {
       Object.keys(this.computed).forEach(key => {
